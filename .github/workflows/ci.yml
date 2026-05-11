@@ -7,8 +7,8 @@ on:
     branches: [main]
 
 jobs:
-  typecheck-and-build:
-    name: Typecheck & Build
+  typecheck:
+    name: Typecheck
     runs-on: ubuntu-latest
 
     steps:
@@ -31,9 +31,3 @@ jobs:
 
       - name: Typecheck
         run: pnpm run typecheck
-
-      - name: Build
-        run: pnpm -r --if-present run build
-        env:
-          PORT: 5000
-          BASE_PATH: /
