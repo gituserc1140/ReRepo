@@ -4,16 +4,8 @@ set -e
 GITHUB_USER="gituserc1140"
 REPO_NAME="ReRepo"
 
-# Use env var if set, otherwise prompt
-if [ -n "$GITHUB_PERSONAL_ACCESS_TOKEN2" ]; then
-  TOKEN="$GITHUB_PERSONAL_ACCESS_TOKEN2"
-elif [ -n "$GITHUB_PERSONAL_ACCESS_TOKEN" ]; then
-  TOKEN="$GITHUB_PERSONAL_ACCESS_TOKEN"
-else
-  echo "No GitHub token found in environment."
-  read -rsp "Paste your GitHub Personal Access Token: " TOKEN
-  echo ""
-fi
+read -rsp "Paste your GitHub Personal Access Token: " TOKEN
+echo ""
 
 echo "Verifying token with GitHub..."
 STATUS=$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: token $TOKEN" https://api.github.com/user)
